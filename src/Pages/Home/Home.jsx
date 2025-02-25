@@ -1,3 +1,5 @@
+import { ProgressAndForm } from "./ProgressAndForm/ProgressAndForm";
+
 export const Home = () => {
   return (
     <div className="flex min-h-[calc(100vh-130px)] flex-col md:flex-row items-center">
@@ -14,7 +16,9 @@ export const Home = () => {
       <div className=" md:w-[40%]">
         <div className="p-4 md:p-7 rounded-2xl bg-white">
           <h2 className="md:text-xl font-medium">Complete the steps to unlock your solar potential</h2>
+          <ProgressAndForm/>
         </div>
+      
 
       </div>
     </div>
