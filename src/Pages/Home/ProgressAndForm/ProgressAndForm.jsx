@@ -17,7 +17,7 @@ export const ProgressAndForm = () => {
     freeTime: "",
   });
   const currentQuestion = STEPS[currentStep];
-  
+
   const handleNext = () => {
     if (!completedSteps.includes(currentStep)) {
       setCompletedSteps([...completedSteps, currentStep]);
@@ -79,8 +79,8 @@ export const ProgressAndForm = () => {
           <br />
           proper credentials.
         </p>
-        <button 
-          onClick={() => window.location.href = '/'}
+        <button
+          onClick={() => (window.location.href = "/")}
           className="mt-8 px-6 py-3 bg-[#003B87] text-white rounded-md hover:bg-[#002a61] transition-colors"
         >
           Back To Home
@@ -90,8 +90,11 @@ export const ProgressAndForm = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6">
-      <div className="flex items-center justify-between mb-8 sm:mb-12">
+    <div className=" ">
+      <h2 className="md:text-xl font-semibold mb-4 ">
+        Complete the steps to unlock your solar potential
+      </h2>
+      <div className="flex items-center justify-between mb-[1em] ">
         {STEPS.map((step, index) => (
           <React.Fragment key={index}>
             <div className="flex flex-col items-center">
@@ -107,60 +110,70 @@ export const ProgressAndForm = () => {
               >
                 {index + 1}
               </div>
-              <span className={`text-xs sm:text-sm mt-2 ${
-                    index === currentStep
-                      ? "font-bold"
-                      : isStepCompleted(index)
-                      ? "font-bold text-[#617BE5] "
-                      : ""
-                  }`}>
+              <span
+                className={`text-[8px] md:text-[10px] mt-2 ${
+                  index === currentStep
+                    ? "font-bold"
+                    : isStepCompleted(index)
+                    ? "font-bold text-[#617BE5] "
+                    : ""
+                }`}
+              >
                 {index === STEPS.length - 1 ? "Last Page" : "Next"}
               </span>
             </div>
             {index < STEPS.length - 1 && (
-              <div className={`flex-1 h-[1px] mb-4 sm:mb-6 mx-1 sm:mx-2 transition-all duration-300 ${
-                shouldShowDivider(index)
-                  ? index < currentStep
-                    ? "bg-teal-500"
-                    : "bg-black"
-                  : "opacity-0"
-              }`} />
+              <div
+                className={`flex-1 h-[1px] mb-4 sm:mb-6 mx-1 sm:mx-2 transition-all duration-300 ${
+                  shouldShowDivider(index)
+                    ? index < currentStep
+                      ? "bg-teal-500"
+                      : "bg-black"
+                    : "opacity-0"
+                }`}
+              />
             )}
           </React.Fragment>
         ))}
       </div>
-      <div className="mb-6 sm:mb-8">
+      <div className="mb-6 ">
         {currentQuestion.questions ? (
-          // Multiple questions in one step
           <div className="space-y-4 sm:space-y-6">
             {currentQuestion.questions.map((question, idx) => (
               <div key={idx} className="space-y-4">
-                <h2 className="text-base md:text-xl font-bold mb-[14px]">
+                <h2 className="text-base lg:text-xl font-semibold mb-[14px]">
                   {question.title} <span className="text-gray-500">*</span>
                 </h2>
-                
+
                 {question.options ? (
                   // Radio buttons
                   <div className="space-y-[0.7rem]">
                     {question.options.map((option) => (
-                      <div key={option.value} className="flex items-center space-x-2 cursor-pointer">
+                      <div
+                        key={option.value}
+                        className="flex items-center space-x-2 cursor-pointer"
+                      >
                         <input
                           type="radio"
                           id={option.value}
                           name={question.key}
                           value={option.value}
                           checked={formData[question.key] === option.value}
-                          onChange={(e) => handleInputChange(e.target.value, question.key)}
+                          onChange={(e) =>
+                            handleInputChange(e.target.value, question.key)
+                          }
                           className="w-4 h-4 cursor-pointer"
                         />
-                        <label htmlFor={option.value} className="text-lg cursor-pointer">
+                        <label
+                          htmlFor={option.value}
+                          className="text-lg cursor-pointer"
+                        >
                           {option.label}
                         </label>
                       </div>
                     ))}
                   </div>
                 ) : question.fields ? (
-                  // Multiple input fields for address
                   <div className="grid gap-4">
                     {question.fields.map((field) => (
                       <input
@@ -168,18 +181,21 @@ export const ProgressAndForm = () => {
                         type={field.type}
                         placeholder={field.placeholder}
                         value={formData[field.key]}
-                        onChange={(e) => handleInputChange(e.target.value, field.key)}
+                        onChange={(e) =>
+                          handleInputChange(e.target.value, field.key)
+                        }
                         className="w-full px-3 py-2 border rounded-full text-sm sm:text-base"
                       />
                     ))}
                   </div>
                 ) : (
-                  // Single input field
                   <input
                     type={question.type}
                     placeholder={question.placeholder}
                     value={formData[question.key]}
-                    onChange={(e) => handleInputChange(e.target.value, question.key)}
+                    onChange={(e) =>
+                      handleInputChange(e.target.value, question.key)
+                    }
                     className="w-full px-3 py-2 border rounded-full text-sm sm:text-base"
                   />
                 )}
@@ -191,20 +207,28 @@ export const ProgressAndForm = () => {
             <h2 className="text-base md:text-xl font-bold mb-[14px]">
               {currentQuestion.title} <span className="text-gray-500">*</span>
             </h2>
-            {/* Rest of the single question rendering logic */}
+
             <div className="space-y-[0.7rem]">
               {currentQuestion.options.map((option) => (
-                <div key={option.value} className="flex items-center space-x-2 cursor-pointer">
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 cursor-pointer"
+                >
                   <input
                     type="radio"
                     id={option.value}
                     name={currentQuestion.key}
                     value={option.value}
                     checked={formData[currentQuestion.key] === option.value}
-                    onChange={(e) => handleInputChange(e.target.value, currentQuestion.key)}
+                    onChange={(e) =>
+                      handleInputChange(e.target.value, currentQuestion.key)
+                    }
                     className="w-4 h-4 cursor-pointer"
                   />
-                  <label htmlFor={option.value} className="text-lg cursor-pointer">
+                  <label
+                    htmlFor={option.value}
+                    className="text-lg cursor-pointer"
+                  >
                     {option.label}
                   </label>
                 </div>
@@ -213,11 +237,11 @@ export const ProgressAndForm = () => {
           </>
         )}
       </div>
-      {/* Navigation Buttons */}
+
       <div className="flex gap-3 sm:gap-4">
         {currentStep > 0 && (
-          <button 
-            onClick={handleBack} 
+          <button
+            onClick={handleBack}
             className="px-6 py-3 border border-[#003B87] text-[#003B87] rounded-full hover:bg-[#003B87] hover:text-white transition-all cursor-pointer text-sm sm:text-base"
           >
             Back
