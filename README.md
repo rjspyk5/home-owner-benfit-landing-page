@@ -1,12 +1,9 @@
 # Home Owner Benefits Platform
-
 A React-based web application for managing and exploring home owner benefits and services.
-
-## Live Demo
 
 Visit the live application at: [Home Owner Benefits Platform](https://home-owner-benfit.vercel.app/)
 
-## Getting Started
+## How to run this project
 
 ### Prerequisites
 - Node.js (version 14 or higher)
@@ -16,7 +13,7 @@ Visit the live application at: [Home Owner Benefits Platform](https://home-owner
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/rjspyk5/home-owner-benfit-landing-page
 cd nebs-it
 ```
 
