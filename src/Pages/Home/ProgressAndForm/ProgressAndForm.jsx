@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { STEPS } from "../../../data/formConfig";
+import { SuccessMessage } from "./SuccessMessage";
+
 export const ProgressAndForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = React.useState([]);
@@ -64,29 +66,7 @@ export const ProgressAndForm = () => {
   };
 
   if (isSubmitted) {
-    return (
-      <div className="text-center space-y-4 py-12">
-        <h2 className="text-2xl font-bold text-[#003B87] mb-2">
-          Thank you for your response
-        </h2>
-        <p className="text-xl">
-          You&re about to save estimated
-          <br />
-          <span className="text-3xl font-bold text-[#34D7A1]">18,000 USD.</span>
-        </p>
-        <p className="text-gray-600">
-          We&ll contact with you soon with
-          <br />
-          proper credentials.
-        </p>
-        <button
-          onClick={() => (window.location.href = "/")}
-          className="mt-8 px-6 py-3 bg-[#003B87] text-white rounded-md hover:bg-[#002a61] transition-colors"
-        >
-          Back To Home
-        </button>
-      </div>
-    );
+    return <SuccessMessage />;
   }
 
   return (
@@ -177,6 +157,7 @@ export const ProgressAndForm = () => {
                   <div className="grid gap-4">
                     {question.fields.map((field) => (
                       <input
+                        required
                         key={field.key}
                         type={field.type}
                         placeholder={field.placeholder}
@@ -190,6 +171,7 @@ export const ProgressAndForm = () => {
                   </div>
                 ) : (
                   <input
+                    required
                     type={question.type}
                     placeholder={question.placeholder}
                     value={formData[question.key]}
@@ -215,6 +197,7 @@ export const ProgressAndForm = () => {
                   className="flex items-center space-x-2 cursor-pointer"
                 >
                   <input
+                    required
                     type="radio"
                     id={option.value}
                     name={currentQuestion.key}
@@ -225,10 +208,7 @@ export const ProgressAndForm = () => {
                     }
                     className="w-4 h-4 cursor-pointer"
                   />
-                  <label
-                    htmlFor={option.value}
-                    className="text-lg cursor-pointer"
-                  >
+                  <label htmlFor={option.value} className=" cursor-pointer">
                     {option.label}
                   </label>
                 </div>
@@ -242,7 +222,7 @@ export const ProgressAndForm = () => {
         {currentStep > 0 && (
           <button
             onClick={handleBack}
-            className="px-6 py-3 border border-[#003B87] text-[#003B87] rounded-full hover:bg-[#003B87] hover:text-white transition-all cursor-pointer text-sm sm:text-base"
+            className="px-8 py-3 border border-[#003B87] text-[#003B87] rounded-full hover:bg-[#003B87] hover:text-white transition-all cursor-pointer text-sm sm:text-base"
           >
             Back
           </button>
@@ -250,7 +230,7 @@ export const ProgressAndForm = () => {
         <button
           onClick={handleNext}
           disabled={!isCurrentStepValid()}
-          className="flex-1 bg-[#003B87] text-white border border-[#003B87] rounded-full px-4 sm:px-6 py-3 hover:bg-white hover:text-[#003B87] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+          className="flex-1 bg-[#003B87] text-white border border-[#003B87] rounded-full  py-3 hover:bg-white hover:text-[#003B87] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
         >
           {currentStep === STEPS.length - 1 ? "Submit" : "Next"}
         </button>

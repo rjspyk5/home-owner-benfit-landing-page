@@ -8,15 +8,21 @@ export const Home = () => {
           Power Your Home. Empower Your Future. Switch to Solar Today!
         </h1>
         <ul className="text-[12px] lg:text-base list-disc text-white space-y-1 pl-5  md:max-w-xl">
-          <li className="pl-1">Experience Lower Electricity Bills with Solar Power</li>
-          <li className="pl-1">Clean Energy Independence. Invest in a Greener Future</li>
-          <li className="pl-1">Transform Your Roof into a Revenue Stream. Monetize Surplus Solar Energy Through Grid Export</li>
+          <li className="pl-1">
+            Experience Lower Electricity Bills with Solar Power
+          </li>
+          <li className="pl-1">
+            Clean Energy Independence. Invest in a Greener Future
+          </li>
+          <li className="pl-1">
+            Transform Your Roof into a Revenue Stream. Monetize Surplus Solar
+            Energy Through Grid Export
+          </li>
         </ul>
       </div>
       <div className="w-full md:p-2 md:w-[50%] lg:w-[40%]">
         <div className="p-5 md:p-7 my-10 md:my-0 rounded-2xl bg-white max-w-3xl ">
-          
-          <ProgressAndForm/>
+          <ProgressAndForm />
         </div>
       </div>
     </div>
